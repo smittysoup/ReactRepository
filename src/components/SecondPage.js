@@ -26,6 +26,7 @@ const handleSubmit = (event) => {
   return (
     <div>
       <p/>
+      <p/>
       <form onSubmit={handleSubmit}>
         <label>
           Prompt:
