@@ -8,8 +8,7 @@ import ThirdPage from './components/ThirdPage'; // import the ThirdPage componen
 
 function App() { // define a functional component named App
   const [currentPage, setCurrentPage] = useState('Course Designer'); // declare a state variable named currentPage initialized to "home" and a function to update it named setCurrentPage
-  //const [courseName, setCourseName] = useState(''); // declare a state variable named courseName initialized to an empty string and a function to update it named setCourseName
-  const [secondPageData, setSecondPageData] = useState({ pageName: '', name: '', instructor: "fred" });
+   const [secondPageData, setSecondPageData] = useState({ pageName: '', name: '', instructor: "fred" });
   const [thirdPageData, setThirdPageData] = useState({ pageName: '', name: '', instructor: "fred" });
 
   const handlePageChange = (page) => { // define a function named handlePageChange that receives a page argument
@@ -19,7 +18,6 @@ function App() { // define a functional component named App
   };
 
   const handleCourseSubmit = (name) => { // define a function named handleCourseSubmit that receives a name argument
-    //setCourseName(name); // call setCourseName with the name argument to update the courseName state variable
     setSecondPageData({ name: name, instructor: "fred" });
     setThirdPageData({ name: name, instructor: "fred" });
   };
@@ -31,7 +29,7 @@ function App() { // define a functional component named App
         <LeftNavPane onPageChange={handlePageChange} /> 
        
         <div className="pageContainer"> 
-          {currentPage === 'Course Designer' && <CourseDesigner onCourseSubmit={handleCourseSubmit} data = {currentPage} />}
+          {currentPage === 'Course Designer' && <CourseDesigner data = {currentPage} onPageChange={handlePageChange}/>}
           {currentPage === 'Course Library' && <SecondPage data={secondPageData} />} 
           {currentPage === 'Create New Course' && <ThirdPage data={thirdPageData} />} 
         </div>

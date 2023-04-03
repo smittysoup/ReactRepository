@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Component.css';
 import DraggableSection from './DraggableSection.js'; // import the CourseDesigner component
 
-const CourseDesigner = ({ onCourseSubmit }) => {
+const CourseDesigner = ({ onPageChange }) => {
   const [courseTopic, setCourseTopic] = useState('');
   const [courseName, setCourseName] = useState('');
   const [learningObjectives, setLearningObjectives] = useState('');
@@ -12,30 +12,15 @@ const CourseDesigner = ({ onCourseSubmit }) => {
     onCourseSubmit({ courseTopic, courseName, learningObjectives });
   };
 
-  const handleDragStart = (e) => {
-    e.dataTransfer.setData('text/plain', e.target.id);
-  };
+  function onCourseSubmit(course) {
+    setCourseTopic = course.courseTopic;
+    setCourseName = course.courseName;
+    setLearningObjectives = course.learningObjectives;
+  }
 
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-  };
-
-  const handleDragEnter = (e) => {
-    e.target.classList.add('over');
-  };
-
-  const handleDragLeave = (e) => {
-    e.target.classList.remove('over');
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const id = e.dataTransfer.getData('text/plain');
-    const draggableElement = document.getElementById(id);
-    e.target.appendChild(draggableElement);
-    e.target.classList.remove('over');
-  };
+  function handleClick(page) { // define a function named handleClick that receives a page argument
+    onPageChange(page); // call the onPageChange function passed in the props with the page argument
+  }
 
   return (
     <div className="courseDesigner">
@@ -78,7 +63,14 @@ const CourseDesigner = ({ onCourseSubmit }) => {
         </form>
       </div>
       {<DraggableSection/>}
+      <div>
+        Drag and drop items from left to right to include them in your course plan. Topics are sorted color coded based on difficulty level. Don’t like what you see?  Regenerate the list to try again.
+      <p/>
+      <button className="navButton" onClick={() => handleClick('Course Library')}></button>
+      
       </div>
+      </div>
+
 
     );
   }

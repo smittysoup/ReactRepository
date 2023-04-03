@@ -18,7 +18,11 @@ const handleSubmit = (event) => {
       setResponse(response.data.response);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.setError( error);
+      console.log(error.request);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
     });
 }
 
@@ -34,7 +38,9 @@ const handleSubmit = (event) => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <p>Response: {response}</p>
+      <p>prompt: {prompt}</p>
+      <p>response: {response}</p>
+
     </div>
   );
 }
