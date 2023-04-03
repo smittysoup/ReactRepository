@@ -13,6 +13,17 @@ on:
 
 jobs:
 
+  zip: 
+    runs-on: ubuntu-latest
+
+    steps: 
+    - uses: actions/checkout@master
+    - name: Archive Release
+      uses: thedoctor0/zip-release@0.7.1
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+
   build:
     runs-on: ubuntu-latest
 
