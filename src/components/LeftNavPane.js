@@ -8,9 +8,9 @@ function LeftNavPane(props) { // define a functional component named LeftNavPane
 
   return ( // return a JSX element
     <div className="leftNavPane"> {/* a div element with a class name of "leftNavPane" */}
-      <button className="navButton" onClick={() => handleClick('home')}>
+      <button className="navButton" onClick={() => handleClick('Course Designer')}>
         {/* a button element with a class name of "navButton" and a click event listener that calls handleClick with the argument "home" */}
-        Home
+        Course Designer
       </button>
       <button className="navButton" onClick={() => handleClick('Course Library')}>
         {/* a button element with a class name of "navButton" and a click event listener that calls handleClick with the argument "second" */}

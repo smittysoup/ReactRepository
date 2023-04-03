@@ -2,12 +2,12 @@ import React, { useState } from 'react'; // import the React library and the use
 import './App.css'; // import a CSS file
 import NavBar from './components/NavBar'; // import the NavBar component
 import LeftNavPane from './components/LeftNavPane'; // import the LeftNavPane component
-import HomePage from './components/HomePage'; // import the HomePage component
+import CourseDesigner from './components/CourseDesigner'; // import the courseDesigner component
 import SecondPage from './components/SecondPage'; // import the SecondPage component
 import ThirdPage from './components/ThirdPage'; // import the ThirdPage component
 
 function App() { // define a functional component named App
-  const [currentPage, setCurrentPage] = useState(''); // declare a state variable named currentPage initialized to "home" and a function to update it named setCurrentPage
+  const [currentPage, setCurrentPage] = useState('Course Designer'); // declare a state variable named currentPage initialized to "home" and a function to update it named setCurrentPage
   //const [courseName, setCourseName] = useState(''); // declare a state variable named courseName initialized to an empty string and a function to update it named setCourseName
   const [secondPageData, setSecondPageData] = useState({ pageName: '', name: '', instructor: "fred" });
   const [thirdPageData, setThirdPageData] = useState({ pageName: '', name: '', instructor: "fred" });
@@ -31,7 +31,7 @@ function App() { // define a functional component named App
         <LeftNavPane onPageChange={handlePageChange} /> 
        
         <div className="pageContainer"> 
-          {currentPage === 'home' && <HomePage onCourseSubmit={handleCourseSubmit} data = {currentPage} />}
+          {currentPage === 'Course Designer' && <CourseDesigner onCourseSubmit={handleCourseSubmit} data = {currentPage} />}
           {currentPage === 'Course Library' && <SecondPage data={secondPageData} />} 
           {currentPage === 'Create New Course' && <ThirdPage data={thirdPageData} />} 
         </div>

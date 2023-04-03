@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './Component.css';
 
-const NavBar = ({ currentPage }) => {
-
+const NavBar = ({ header }) => {
+  var msgText = header;
+  
+    if (header = "Course Designer") { msgText= "Course Designer"}
+    else {msgText=header}
+  
   return (
     <div className="navbar">
-      <span>{currentPage}</span>
+      <span>{msgText}</span>
     </div>
   );
 };
