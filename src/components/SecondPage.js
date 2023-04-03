@@ -16,11 +16,15 @@ const handleSubmit = (event) => {
   axios({
     method: 'post',
     url: 'https://learnerwebapp.azurewebsites.net/api/query',
-    data: { Prompt: prompt },
+    data: { Prompt: prompt , Sender: 'test'},
     headers: { 'Content-Type': 'application/json' },
   })
+    .then((response) => {
+      const result = response.data.result;
+      setResponse(result);
+    })
     .catch(error => {
-      console.setError( error);
+      console.log(error.config);
       console.log(error.request);
       console.log(error.response.data);
       console.log(error.response.status);
