@@ -13,10 +13,12 @@ function SecondPage() {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  axios.post('https://learnerwebapp.azurewebsites.net/api/query', { Prompt: prompt })
-    .then(response => {
-      setResponse(response.data.response);
-    })
+  axios({
+    method: 'post',
+    url: 'https://learnerwebapp.azurewebsites.net/api/query',
+    data: { Prompt: prompt },
+    headers: { 'Content-Type': 'application/json' },
+  })
     .catch(error => {
       console.setError( error);
       console.log(error.request);
