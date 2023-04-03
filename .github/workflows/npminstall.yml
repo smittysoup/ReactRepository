@@ -11,16 +11,9 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
 
     steps:
-    zip -r node-app.zip .
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: node-app
-          path: node-app.zip
-          runs-on: ubuntu-latest
-
       - uses: actions/checkout@v2
 
       - name: Set up Node.js version
@@ -30,15 +23,13 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install
+         npm install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-    - run: |
-        unzip node-app.zip
-        rm node-app.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
